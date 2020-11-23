@@ -79,23 +79,23 @@ arm-linux-gnueabihf-gcc --static simple_c.c -o simple_c_arm
 ```sh
 ./build/ARM/gem5.opt -d c_program_minor_clock configs/example/se.py --sys-clock=10Mhz --cpu-type="MinorCPU" --caches --cmd=tests/test-progs/hello/bin/arm/linux/simple_c_arm
 ```
-Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000631 s
+Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000631 s.
 Με TimingSimpleCPU και clock = 10MHz:
 ```sh
 ./build/ARM/gem5.opt -d c_program_timing_clock configs/example/se.py --sys-clock=10Mhz --cpu-type="TimingSimpleCPU" --caches --cmd=tests/test-progs/hello/bin/arm/linux/simple_c_arm
 ```
-Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000636 s
+Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000636 s.
 Βλέπουμε πολύ μεγαλύτερο χρόνο εκτέλεσης, πράγμα λογικό αφού μειώθηκε η συχνότητα λειτουργίας των επεξεργαστών.
 
 Με MinorCPU, clock = 1GHz και τύπο μνήμης DDR4_2400_8x8: 
 ```sh
 ./build/ARM/gem5.opt -d c_program_minor_mem configs/example/se.py --mem-type=DDR4_2400_8x8 --cpu-type="MinorCPU" --caches --cmd=tests/test-progs/hello/bin/arm/linux/simple_c_arm
 ```
-Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000032 s
+Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000032 s.
 
 Με TimingSimpleCPU, clock = 1GHz και τύπο μνήμης DDR4_2400_8x8: 
 ```sh
 ./build/ARM/gem5.opt -d c_program_timing_mem configs/example/se.py --mem-type=DDR4_2400_8x8 --cpu-type="TimingSimpleCPU" --caches --cmd=tests/test-progs/hello/bin/arm/linux/simple_c_arm
 ```
-Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000037 s
+Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000037 s.
 Μειώθηκε οριακά ο χρόνος εκτέλεσης και στους δύο επεξεργαστές, πράγμα λογικό καθώς η καινούρια μνήμη είναι ελαφρώς γρηγορότερη.
