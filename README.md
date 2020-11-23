@@ -67,13 +67,13 @@ arm-linux-gnueabihf-gcc --static simple_c.c -o simple_c_arm
 ./build/ARM/gem5.opt -d c_program_minor_standard configs/example/se.py --cpu-type="MinorCPU" --caches --cmd=tests/test-progs/hello/bin/arm/linux/simple_c_arm
 ```
 Χρησιμοποιήθηκε το script "se.py" με τύπο CPU: "Minor"
-Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000033 s
+Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000033 s.
 
 Χρησιμοποιώντας "TimingSimpleCPU":
 ```sh
 ./build/ARM/gem5.opt -d c_program_timing_standard configs/example/se.py --cpu-type="TimingSimpleCPU" --caches --cmd=tests/test-progs/hello/bin/arm/linux/simple_c_arm
 ```
-Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000038 s
+Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000038 s.
 Η διαφορά στον χρόνο εκτέλεσης είναι σχετικά μικρή, καθώς και τα δύο μοντέλα είναι αναλυτικά.
 Με MinorCPU και clock = 10MHz:
 ```sh
