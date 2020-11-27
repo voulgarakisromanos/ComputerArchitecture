@@ -24,8 +24,11 @@ $ cd  ./build/ARM/gem5.opt -d hello_result configs/example/arm/starter_se.py--cp
 * system.voltage_domain.voltage 3.300000  # Voltage in Volts
 * mem_mode: "timing"
 * mem_ranges: "0:2147483648"
-* stats.txt: system.cpu_cluster.cpus.committedInsts           5028                       # Number of instructions committed
+* sim_insts                                        5028                       # Number of instructions simulated
+* sim_ops                                          5834                       # Number of ops (including micro ops)
 * system.cpu_cluster.l2.overall_accesses::total          479                       # number of overall (read+write) accesses
+
+Η διαφορά ανάμεσα στα commited ops/instructions οφείλεται στο γεγονός ότι κάποια instructions - παρότι ανήκουν σε RISC ISA - αποτελούνται από περισσότερα του ενός micro ops. 
 
 Τα L2 cache accesses θα μπορούσαν θεωρητικά να υπολογιστούν από τα L1 cache (instruction + data) misses. Παρατηρείται όμως ότι αν και αυτό επαληθεύεται για την icache, δεν ισχύει το ίδιο για την dcache.  
 
