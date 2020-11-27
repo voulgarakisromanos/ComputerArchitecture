@@ -83,35 +83,29 @@ arm-linux-gnueabihf-gcc --static simple_c.c -o simple_c_arm
 
 Η διαφορά στον χρόνο εκτέλεσης είναι σχετικά μικρή, καθώς και τα δύο μοντέλα είναι αναλυτικά.
 
-Με MinorCPU και clock = 10MHz:
+Τρέχοντας τις παρακάτω εντολές, προέκυψαν οι πίνακες χρόνου εκτέλεσης που ακολουθούν:
+
 ```sh
 ./build/ARM/gem5.opt -d c_program_minor_clock configs/example/se.py --sys-clock=10Mhz --cpu-type="MinorCPU" --caches --cmd=tests/test-progs/hello/bin/arm/linux/simple_c_arm
-```
-Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000631 s.
 
-Με TimingSimpleCPU και clock = 10MHz:
-```sh
 ./build/ARM/gem5.opt -d c_program_timing_clock configs/example/se.py --sys-clock=10Mhz --cpu-type="TimingSimpleCPU" --caches --cmd=tests/test-progs/hello/bin/arm/linux/simple_c_arm
-```
-Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000636 s.
 
-Βλέπουμε πολύ μεγαλύτερο χρόνο εκτέλεσης και στα δύο μοντέλα, πράγμα λογικό αφού μειώθηκε η συχνότητα λειτουργίας των επεξεργαστών.
-
-Με MinorCPU, clock = 1GHz και τύπο μνήμης DDR4_2400_8x8: 
-```sh
 ./build/ARM/gem5.opt -d c_program_minor_mem configs/example/se.py --mem-type=DDR4_2400_8x8 --cpu-type="MinorCPU" --caches --cmd=tests/test-progs/hello/bin/arm/linux/simple_c_arm
-```
-Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000032 s.
 
-Με TimingSimpleCPU, clock = 1GHz και τύπο μνήμης DDR4_2400_8x8: 
-```sh
 ./build/ARM/gem5.opt -d c_program_timing_mem configs/example/se.py --mem-type=DDR4_2400_8x8 --cpu-type="TimingSimpleCPU" --caches --cmd=tests/test-progs/hello/bin/arm/linux/simple_c_arm
 ```
-Χρόνος εκτέλεσης στον simulated επεξεργαστή: 0.000037 s.
 
-Μειώθηκε οριακά ο χρόνος εκτέλεσης και στα δύο μοντέλα, πράγμα λογικό καθώς η καινούρια μνήμη είναι ελαφρώς γρηγορότερη.
+Συνοπτικοί πίνακες με τους χρόνους εκτέλεσης (σε seconds) του κάθε επεξεργαστή για διάφορες παραμέτρους:
 
 | Clock frequency | 10MHz    | 100MHz   | 1GHz     |
 |-----------------|----------|----------|----------|
 | MinorCPU        | 0.000631 | 0.000085 | 0.000033 |
 | TimingSimpleCPU | 0.000636 | 0.000090 | 0.000038 |
+
+
+| Memory type     | DDR3     | DDR4_2400_8x8 | DDR4_2400_4x16 |
+|-----------------|----------|---------------|----------------|
+| MinorCPU        | 0.000033 | 0.000032      | 0.000033       |
+| TimingSimpleCPU | 0.000038 | 0.000037      | 0.000039       |
+
+
